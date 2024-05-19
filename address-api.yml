@@ -1,0 +1,227 @@
+openapi: '3.0.2'
+info:
+  title: Address API
+  version: '1.0'
+servers:
+  - url: https://localhost:8000/api
+paths:
+  /api/contacts/{idContact}/addresses:
+    post:
+      description: Create new Address
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            $ref: '#/components/schemas/userId'
+        - name: idContact
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/userId'
+      requestBody:
+          description: Create new Address
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  street:
+                    type: string
+                  city:
+                    type: string
+                  province:
+                    type: string
+                  country:
+                    type: string
+                  postal_code:
+                    type: string
+      responses:
+        '201':
+          description: Success Created Address
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      street:
+                        type: string
+                      city:
+                        type: string
+                      province:
+                        type: string
+                      country:
+                        type: string
+                      postal_code:
+                        type: string
+                  errors:
+                    type: object
+    get:
+      description: get list Addresses
+      responses:
+        '200':
+          description: Get List Addresses
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        street:
+                          type: string
+                        city:
+                          type: string
+                        province:
+                          type: string
+                        country:
+                          type: string
+                        postal_code:
+                          type: string  
+                  errors:
+                    type: object
+  /api/contacts/{idContact}/addresses/{idAddress}:
+    get:
+      description: Get Address
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            $ref: '#/components/schemas/userId'
+        - name: idContact
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/userId'
+        - name: idAddress
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/userId'
+      responses:
+        '200':
+          description: Success Get Address
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      street:
+                        type: string
+                      city:
+                        type: string
+                      province:
+                        type: string
+                      country:
+                        type: string
+                      postal_code:
+                        type: string
+                  errors:
+                    type: object
+    put:
+      description: Update Address
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            $ref: '#/components/schemas/userId'
+        - name: idContact
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/userId'
+        - name: idAddress
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/userId'
+      requestBody:
+          description: Create new Address
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  street:
+                    type: string
+                  city:
+                    type: string
+                  province:
+                    type: string
+                  country:
+                    type: string
+                  postal_code:
+                    type: string
+      responses:
+        '200':
+          description: Update Contact Address
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      street:
+                        type: string
+                      city:
+                        type: string
+                      province:
+                        type: string
+                      country:
+                        type: string
+                      postal_code:
+                        type: string
+                  errors:
+                    type: object
+    delete:
+      description: Remove Address
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            $ref: '#/components/schemas/userId'
+        - name: idContact
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/userId'
+        - name: idAddress
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/userId'
+      responses:
+        '200':
+          description: Remove Contact Address
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: boolean
+                  errors:
+                    type: object
+
+components:
+    schemas:
+      userId:
+        type: string

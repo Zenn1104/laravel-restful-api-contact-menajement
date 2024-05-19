@@ -1,0 +1,213 @@
+openapi: '3.0.2'
+info:
+  title: Contact API
+  version: '1.0'
+servers:
+  - url: https://localhost:8000/api
+paths:
+  /api/contacts:
+    post:
+      description: Create New Contact
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            $ref: '#/components/schemas/userId'
+      requestBody:
+        description: Create New Contact
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+      responses:
+        '201':
+          description: Success Create Contact
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+                      phone:
+                        type: string
+                  errors:
+                    type: object
+    get:
+      description: Search Contact
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            $ref: '#/components/schemas/userId'
+        - name: name
+          in: query
+          schema:
+            $ref: '#/components/schemas/userId'
+        - name: phone
+          in: query
+          schema:
+            $ref: '#/components/schemas/userId'
+        - name: email
+          in: query
+          schema:
+            $ref: '#/components/schemas/userId'
+        - name: size
+          in: query
+          schema:
+            $ref: '#/components/schemas/userId'
+        - name: page
+          in: query
+          schema:
+            $ref: '#/components/schemas/userId'
+      responses:
+        '200':
+          description: Success search contact
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        phone:
+                          type: string
+                  errors:
+                    type: object
+                  meta:
+                    type: object
+  /api/contacts/{id}:
+    put:
+      description: Update Contact
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            $ref: '#/components/schemas/userId'
+        - name: id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/userId'
+      requestBody:
+        description: Update Contact
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+      responses:
+        '200':
+          description: Success update Contact
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+                      phone:
+                        type: string
+                  errors:
+                    type: object
+    get:
+      description: Get Contact
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            $ref: '#/components/schemas/userId'
+        - name: id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/userId'
+      responses:
+        '200':
+          description: Success Get Contact
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+                      phone:
+                        type: string
+                  errors:
+                    type: object
+    delete:
+      description: Remove Contact
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            $ref: '#/components/schemas/userId'
+        - name: id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/userId'
+      responses:
+        '200':
+          description: Success Remove Contact
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: boolean
+                  errors:
+                    type: object
+
+components:
+    schemas:
+      userId:
+        type: string

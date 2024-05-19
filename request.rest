@@ -1,0 +1,126 @@
+
+###Register User API
+POST http://localhost:8000/api/users
+Content-Type: application/json
+Accept: application/json
+
+{
+    "username": "kenn",
+    "password": "rahasia",
+    "name": "Baso M. Arif"
+}
+
+###login User API
+POST http://localhost:8000/api/users/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "username": "kenn",
+    "password": "rahasia"
+}
+
+### Get Current User API
+GET http://localhost:8000/api/users/current
+Accept: application/json
+Authorization: 422e90c0-0d12-4f84-9239-058ea58246ce
+
+###Update Current User API
+PATCH http://localhost:8000/api/users/current
+Content-Type: application/json
+Accept: application/json
+Authorization: 422e90c0-0d12-4f84-9239-058ea58246ce
+
+{
+    "name": "Baso Alif G"
+}
+
+###Logout User API
+DELETE http://localhost:8000/api/users/logout
+Accept: application/json
+Authorization: 422e90c0-0d12-4f84-9239-058ea58246ce
+
+###Create Contact API
+POST http://localhost:8000/api/contacts
+Content-Type: application/json
+Accept: application/json
+Authorization: 32b8c7b2-ef80-49c5-815f-7e98801fb9b0
+
+{
+    "first_name": "Lisa",
+    "last_name": "Maharani",
+    "email": "maharani@zen.com",
+    "phone": "+628222737"
+}
+
+###Get Contact API
+GET  http://localhost:8000/api/contacts/639
+Accept: application/json
+Authorization: 32b8c7b2-ef80-49c5-815f-7e98801fb9b0
+
+###Update Contact API
+PUT http://localhost:8000/api/contacts/639
+Content-Type: application/json
+Accept: application/json
+Authorization: 32b8c7b2-ef80-49c5-815f-7e98801fb9b0
+
+{
+    "first_name": "Baso updated",
+    "last_name": "Alif updated",
+    "email": "basoalif@zen.com",
+    "phone": "+628222737"
+}
+
+###Delete Contact API
+DELETE http://localhost:8000/api/contacts/639
+Accept: application/json
+Authorization: 32b8c7b2-ef80-49c5-815f-7e98801fb9b0
+
+###Search Contact API
+GET http://localhost:8000/api/contacts?email=resa
+Accept: application/json
+Authorization: 32b8c7b2-ef80-49c5-815f-7e98801fb9b0
+
+###Create Address API
+POST http://localhost:8000/api/contacts/641/addresses
+Content-Type: application/json
+Accept: application/json
+Authorization: 32b8c7b2-ef80-49c5-815f-7e98801fb9b0
+
+{
+    "street": "Jl. Kartika Candra Kirana",
+    "city": "Sengkang",
+    "province": "Sulawesi Selatan",
+    "country": "Indonesia",
+    "postal_code": "90911"
+}
+
+
+###Get Address API
+GET http://localhost:8000/api/contacts/641/addresses/64
+Accept: application/json
+Authorization: 32b8c7b2-ef80-49c5-815f-7e98801fb9b0
+
+###Update Address API
+PUT http://localhost:8000/api/contacts/641/addresses/65
+Content-Type: application/json
+Accept: application/json
+Authorization: 32b8c7b2-ef80-49c5-815f-7e98801fb9b0
+
+{
+    "street": "Jl. Latappu",
+    "city": "Sengkang",
+    "province": "Sulawesi Selatan",
+    "country": "Indonesia",
+    "postal_code": "90951"
+}
+
+###Delete Address API
+DELETE http://localhost:8000/api/contacts/641/addresses/64
+Accept: application/json
+Authorization: 32b8c7b2-ef80-49c5-815f-7e98801fb9b0
+
+###List Address API
+GET http://localhost:8000/api/contacts/641/addresses
+Accept: application/json
+Authorization: 32b8c7b2-ef80-49c5-815f-7e98801fb9b0
